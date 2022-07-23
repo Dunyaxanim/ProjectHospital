@@ -1,0 +1,51 @@
+﻿@model Income
+@{
+    ViewData["Title"] = "Update";
+}
+
+
+<form method="post" enctype="multipart/form-data">
+    <div class="form-group " id="maindepartment">
+        <label>Gəlir kateqoriyasını seç</label>
+        <select class="form-control" name="incomecatid">
+            @foreach (IncomeCategory incomeCategory in ViewBag.IncomeCat)
+            {
+                <option value="@incomeCategory.Id">@incomeCategory.Name</option>
+            }
+        </select>
+    </div>
+    <div class="card-body">
+        <div class="form-group">
+            <label asp-for="@Model.Name">Kim tərəfindən</label>
+            <input class="form-control" id="exampleInputEmail1" placeholder="Ad daxil edin" asp-for="@Model.Name">
+            <span class="text-danger" asp-validation-for="@Model.Name"></span>
+        </div>
+    </div>
+    <div class="card-body">
+        <div class="form-group">
+            <label asp-for="@Model.Amount">Dəyər</label>
+            <input class="form-control" id="exampleInputEmail1" placeholder="Dəyər daxil edin" asp-for="@Model.Amount">
+            <span class="text-danger" asp-validation-for="@Model.Amount"></span>
+        </div>
+    </div>
+    <div class="card-body">
+        <div class="form-group">
+            <label asp-for="@Model.Discription">Ətraflı məlumat</label>
+            <input class="form-control" id="exampleInputEmail1" placeholder="Ətraflı məlumat daxil edin" asp-for="@Model.Discription">
+            <span class="text-danger" asp-validation-for="@Model.Discription"></span>
+        </div>
+    </div>
+    <div class="card-body">
+        <div class="form-group">
+            <label asp-for="@Model.Date">Vaxt</label>
+            <input class="form-control" id="exampleInputEmail1" placeholder="Ad daxil edin" asp-for="@Model.Date">
+            <span class="text-danger" asp-validation-for="@Model.Date"></span>
+        </div>
+    </div>
+    <!-- /.card-body -->
+    <div class="card-footer">
+        <button type="submit" class="btn btn-primary">Dəyiş</button>
+    </div>
+</form>
+
+

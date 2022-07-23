@@ -1,0 +1,133 @@
+﻿@model Hekim
+@{
+    ViewData["Title"] = "Create";
+}
+
+
+
+<div asp-validation-summary="ModelOnly" class="text-danger">
+
+</div>
+<form method="post" enctype="multipart/form-data">
+    <div class="card-body">
+        <div class="form-group">
+            <label asp-for="@Model.Name">Ad</label>
+            <input class="form-control" placeholder="Ad daxil edin" asp-for="@Model.Name">
+            <span class="text-danger" asp-validation-for="@Model.Name"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="@Model.SureName">Soyad</label>
+            <input class="form-control" id="exampleInputPassword1" placeholder="Soyad daxil edin" asp-for="@Model.SureName">
+            <span class="text-danger" asp-validation-for="@Model.SureName"></span>
+        </div>
+        <div class="form-group">
+            <label for="exampleInputFile">Şəkil daxil edin</label>
+            <div class="input-group">
+                <div class="custom-file">
+                    <input type="file" class="custom-file-input" id="exampleInputFile" asp-for="@Model.Photo" accept="image/*">
+                    <label class="custom-file-label" for="exampleInputFile">Şəkil yükləyin</label>
+                    <span class="text-danger" asp-validation-for="@Model.Photo"></span>
+                </div>
+
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="@Model.HekimDetail.PhoneNumber">Əlaqə nömrəsi</label>
+            <input type="number" class="form-control" id="exampleInputPassword1" placeholder="123456" asp-for="@Model.HekimDetail.PhoneNumber">
+            <span class="text-danger" asp-validation-for="@Model.HekimDetail.PhoneNumber"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="@Model.HekimDetail.Adress">Adress</label>
+            <input class="form-control" id="exampleInputPassword1" placeholder="Ünvan" asp-for="@Model.HekimDetail.Adress">
+            <span class="text-danger" asp-validation-for="@Model.HekimDetail.Adress"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="@Model.HekimDetail.Destination">Hal hazırda yaşadığı ünvan</label>
+            <input class="form-control" id="exampleInputPassword1" placeholder="Ölkə/Şəhər" asp-for="@Model.HekimDetail.Destination">
+            <span class="text-danger" asp-validation-for="@Model.HekimDetail.Destination"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="@Model.HekimDetail.ForeignLanguages">Dil bilikləri</label>
+            <input class="form-control" id="exampleInputPassword1" placeholder="İngilis, Rus..." asp-for="@Model.HekimDetail.ForeignLanguages">
+            <span class="text-danger" asp-validation-for="@Model.HekimDetail.ForeignLanguages"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="@Model.HekimDetail.DateOfBirth">Doğum tarixi</label>
+            <input type="date" class="form-control" id="exampleInputPassword1" placeholder="dd-MMM-yyyy" asp-for="@Model.HekimDetail.DateOfBirth">
+            <span class="text-danger" asp-validation-for="@Model.HekimDetail.DateOfBirth"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="@Model.HekimDetail.Date">İşə qəbul olunma tarixi</label>
+            <input type="date" class="form-control" id="exampleInputPassword1" placeholder="dd-MMM-yyyy" asp-for="@Model.HekimDetail.Date">
+            <span class="text-danger" asp-validation-for="@Model.HekimDetail.Date"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="@Model.HekimDetail.Position">Vəzifəsi</label>
+            <input class="form-control" id="exampleInputPassword1" placeholder="Vəzifəsi" asp-for="@Model.HekimDetail.Position">
+            <span class="text-danger" asp-validation-for="@Model.HekimDetail.Position"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="@Model.HekimDetail.Proprofession">İxtisası</label>
+            <input class="form-control" id="exampleInputPassword1" asp-for="@Model.HekimDetail.Proprofession" placeholder="İxtisası">
+            <span class="text-danger" asp-validation-for="@Model.HekimDetail.Proprofession"></span>
+        </div>
+        <fieldset class="form-group">
+            <div class="row">
+                <legend class="col-form-label col-sm-2 pt-0">Qan qurpu</legend>
+                <div class="col-sm-10">
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" id="gridRadios1" value="I(O)" checked asp-for="@Model.HekimDetail.BloodGroup">
+                        <label class="form-check-label" asp-for="@Model.HekimDetail.BloodGroup">
+                            I(O)
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" id="gridRadios2" value="II(A)" asp-for="@Model.HekimDetail.BloodGroup">
+                        <label class="form-check-label" asp-for="@Model.HekimDetail.BloodGroup">
+                            II(A)
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" id="gridRadios3" value="III(B)" asp-for="@Model.HekimDetail.BloodGroup">
+                        <label class="form-check-label" asp-for="@Model.HekimDetail.BloodGroup">
+                            III(B)
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" id="gridRadios3" value="IV(C)" asp-for="@Model.HekimDetail.BloodGroup">
+                        <label class="form-check-label" asp-for="@Model.HekimDetail.BloodGroup">
+                            IV(C)
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </fieldset>
+        <div class="form-group " id="maindepartment">
+            <label>Aid oluğu şöbəni seçin</label>
+            <select class="form-control" name="departmentid">
+                @foreach (Department department in ViewBag.Department)
+                {
+                    <option value="@department.Id">@department.DepartmentName</option>
+                }
+            </select>
+        </div>
+        
+
+    </div>
+    <!-- /.card-body -->
+        <button type="submit" class="btn btn-primary">Yarat</button>
+        <a asp-action="Index"  class="btn btn-danger">Ləğv et</a>
+</form>
+
+
+<!-- jQuery -->
+<!--<script src="../../plugins/jquery/jquery.min.js"></script>-->
+<!-- Bootstrap 4 -->
+<!--<script src="../../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>-->
+<!-- bs-custom-file-input -->
+<!--<script src="../../plugins/bs-custom-file-input/bs-custom-file-input.min.js"></script>-->
+<!-- AdminLTE App -->
+<!--<script src="../../dist/js/adminlte.min.js"></script>-->
+<!-- AdminLTE for demo purposes -->
+<!--<script src="../../dist/js/demo.js"></script>-->
+<!-- Page specific script -->

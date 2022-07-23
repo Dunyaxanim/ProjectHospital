@@ -1,0 +1,148 @@
+﻿@model List<ExpenseCategory>
+@{
+    ViewData["Title"] = "Index";
+}
+
+
+
+
+<div class="card">
+    <div class="card-header">
+        <h3 class="card-title">Xərc kateqoriyaları</h3>
+    </div>
+    <a asp-action="Create" asp-controller="ExpenseCategory" class="btn btn-secondary" style="color:white !important"> Xərc kateqoriyası yarat </a>
+    <!-- /.card-header -->
+    <div class="card-body">
+        <table id="example1" class="table table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th>Adı</th>
+                    <th>Status</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (ExpenseCategory item in Model)
+                {
+                    <tr>
+                        <td>@item.Name</td>
+                    <td>
+                        @if (!item.IsDeactive)
+                        {
+                            <span class="text-success">Aktiv</span>
+                        }
+                        else
+                        {
+                            <span class="text-danger">Deaktiv</span>
+                        }
+                    </td>
+                    <td>
+                        <a asp-action="Update" asp-route-id="@item.Id" class="btn btn-primary" style="color:white !important">Dəyiş</a>
+
+                        @if (!item.IsDeactive)
+                        {
+                            <!-- Button trigger modal -->
+                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#cat-@item.Id">
+                                Deaktiv
+                            </button>
+                            <!-- Modal -->
+                            <div class="modal fade" id="cat-@item.Id" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLabel">Bağla</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <h4>Bu kateqoriya deaktiv edilsin?</h4>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Ləğv et</button>
+                                            <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger">Deaktiv et</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                        else
+                        {
+                            <button type="button" class="btn btn-success" data-toggle="modal" data-target="#cat-@item.Id">
+                                Aktiv
+                            </button>
+                            <!-- Modal -->
+                            <div class="modal fade" id="cat-@item.Id" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLabel">Bağla</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Bağla">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <h4>Bu kateqoriya aktiv edilsin?</h4>
+
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Ləğv et</button>
+                                            <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-success">Aktiv et</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    </td>
+                </tr>
+            }
+            </tbody>
+        </table>
+    </div>
+    <!-- /.card-body -->
+</div>
+<!-- /.card -->
+<!-- jQuery -->
+<!--<script src="../../plugins/jquery/jquery.min.js"></script>-->
+<!-- Bootstrap 4 -->
+<!--<script src="../../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>-->
+<!-- DataTables  & Plugins -->
+<!--<script src="../../plugins/datatables/jquery.dataTables.min.js"></script>
+<script src="../../plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+<script src="../../plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
+<script src="../../plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
+<script src="../../plugins/datatables-buttons/js/dataTables.buttons.min.js"></script>
+<script src="../../plugins/datatables-buttons/js/buttons.bootstrap4.min.js"></script>
+<script src="../../plugins/jszip/jszip.min.js"></script>
+<script src="../../plugins/pdfmake/pdfmake.min.js"></script>
+<script src="../../plugins/pdfmake/vfs_fonts.js"></script>
+<script src="../../plugins/datatables-buttons/js/buttons.html5.min.js"></script>
+<script src="../../plugins/datatables-buttons/js/buttons.print.min.js"></script>
+<script src="../../plugins/datatables-buttons/js/buttons.colVis.min.js"></script>-->
+<!-- AdminLTE App -->
+<!--<script src="../../dist/js/adminlte.min.js"></script>-->
+<!-- AdminLTE for demo purposes -->
+<!--<script src="../../dist/js/demo.js"></script>-->
+<!-- Page specific script -->
+@section Scripts{
+    <script src="../../plugins/jszip/jszip.min.js"></script>
+    <script src="../../plugins/pdfmake/pdfmake.min.js"></script>
+    <script src="../../plugins/pdfmake/vfs_fonts.js"></script>
+    <script>
+        $(function () {
+            $("#example1").DataTable({
+                "responsive": true, "lengthChange": false, "autoWidth": false,
+                "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
+            }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+            $('#example2').DataTable({
+                "paging": true,
+                "lengthChange": false,
+                "searching": false,
+                "ordering": true,
+                "info": true,
+                "autoWidth": false,
+                "responsive": true,
+            });
+        });
+    </script>
+}

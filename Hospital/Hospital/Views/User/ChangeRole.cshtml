@@ -1,0 +1,34 @@
+﻿@model ChangeRoleVM
+@{
+    ViewData["Title"] = "ChangeRole";
+}
+
+
+<form method="post" enctype="multipart/form-data">
+    <div class="form-group " id="maindepartment">
+        <label>Gəlir kateqoriyasını seç</label>
+        <select class="form-control" id="exampleFormControlSelect1" name="NewRole">
+            @foreach (IdentityRole role in ViewBag.Roles)
+            {
+                if (role.Name == Model.OldRole)
+                {
+                    <option selected value="@role.Name">@role.Name</option>
+                }
+                else
+                {
+                    <option value="@role.Name">@role.Name</option>
+                }
+
+
+            }
+        </select>
+    </div>
+
+    <div class="card-footer">
+        <button type="submit" class="btn btn-primary">Dəyiş</button>
+        <a asp-action="Index" class="btn btn-danger">Ləğv et</a>
+    </div>
+</form>
+
+
+<

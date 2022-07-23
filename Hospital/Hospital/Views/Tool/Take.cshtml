@@ -1,0 +1,24 @@
+﻿@model Tool
+@{
+    ViewData["Title"] = "Take";
+}
+
+
+
+<form method="post" enctype="multipart/form-data">
+   
+    <div class="card-body">
+        <div class="form-group">
+            <label asp-for="@Model.Count">Say</label>
+            <input class="form-control" id="exampleInputEmail1" placeholder="Say daxil edin" asp-for="@Model.Count">
+            <span class="text-danger" asp-validation-for="@Model.Count"></span>
+        </div>
+    </div>
+
+    <!-- /.card-body -->
+    <div class="card-footer">
+        <button type="submit" class="btn btn-primary">Al</button>
+    </div>
+</form>
+
+

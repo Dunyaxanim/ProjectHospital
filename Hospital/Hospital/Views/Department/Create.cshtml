@@ -1,0 +1,52 @@
+﻿@model Department
+@{
+    ViewData["Title"] = "Create";
+}
+
+
+<div asp-validation-summary="ModelOnly" class="text-danger">
+
+</div>
+<form method="post" enctype="multipart/form-data">
+    <div class="card-body">
+        <div class="form-group">
+            <label for="exampleInputFile">Şəkil daxil edin</label>
+            <div class="input-group">
+                <div class="custom-file">
+                    <input type="file" class="custom-file-input" id="exampleInputFile" asp-for="@Model.Photo" accept="image/*">
+                    <label class="custom-file-label" for="exampleInputFile">Şəkil yükləyin</label>
+                    <span class="text-danger" asp-validation-for="@Model.Picture"></span>
+                </div>
+
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="@Model.DepartmentName">Ad</label>
+            <input class="form-control" id="exampleInputEmail1" placeholder="Ad daxil edin" asp-for="@Model.DepartmentName">
+            <span class="text-danger" asp-validation-for="@Model.DepartmentName"></span>
+        </div>
+        <div class="form-group">
+
+            <textarea id="mytextarea" asp-for="@Model.Description">Haqqında</textarea>
+            <span class="text-danger" asp-validation-for="@Model.Description"></span>
+        </div>
+    </div>
+    <!-- /.card-body -->
+    <div class="card-footer">
+        <button type="submit" class="btn btn-primary">Yarat</button>
+        <a class="btn btn-danger">Ləğv et</a>
+    </div>
+</form>
+
+
+<!-- jQuery -->
+<!--<script src="../../plugins/jquery/jquery.min.js"></script>-->
+<!-- Bootstrap 4 -->
+<!--<script src="../../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>-->
+<!-- bs-custom-file-input -->
+<!--<script src="../../plugins/bs-custom-file-input/bs-custom-file-input.min.js"></script>-->
+<!-- AdminLTE App -->
+<!--<script src="../../dist/js/adminlte.min.js"></script>-->
+<!-- AdminLTE for demo purposes -->
+<!--<script src="../../dist/js/demo.js"></script>-->
+<!-- Page specific script -->

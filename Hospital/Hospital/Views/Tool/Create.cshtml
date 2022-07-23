@@ -1,0 +1,47 @@
+﻿@model Tool
+@{
+    ViewData["Title"] = "Create";
+}
+
+
+<form method="post" enctype="multipart/form-data">
+    <div class="card-body">
+        @*<div class="form-group">
+            <label for="exampleInputFile">Şəkil daxil edin</label>
+            <div class="input-group">
+                <div class="custom-file">
+                    <input type="file" class="custom-file-input" id="exampleInputFile" asp-for="@Model.Photo" accept="image/*">
+                    <label class="custom-file-label" for="exampleInputFile">Şəkil yükləyin</label>
+                    <span class="text-danger" asp-validation-for="@Model.Photo"></span>
+                </div>
+                <div class="input-group-append">
+                    <span class="input-group-text">Upload</span>
+                </div>
+            </div>
+        </div>*@
+
+        <div class="form-group">
+            <label asp-for="@Model.Name">Alətin adı</label>
+            <input class="form-control" id="exampleInputEmail1" placeholder="Alətin adını qeyd edin" asp-for="@Model.Name">
+            <span class="text-danger" asp-validation-for="@Model.Name"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="@Model.Count">Alət sayı</label>
+            <input class="form-control" id="exampleInputEmail1" placeholder="1" asp-for="@Model.Count">
+            <span class="text-danger" asp-validation-for="@Model.Count"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="@Model.Price">Qiyməti</label>
+            <input class="form-control" id="exampleInputEmail1" placeholder="Qiyməti" asp-for="@Model.Price">
+            <span class="text-danger" asp-validation-for="@Model.Price"></span>
+        </div>
+    </div>
+    <!-- /.card-body -->
+
+    <div class="card-footer">
+        <button type="submit" class="btn btn-primary">Yarat</button>
+        <a class="btn btn-danger" asp-action="Index">Ləğv et</a>
+    </div>
+</form>
+
+

@@ -1,0 +1,57 @@
+﻿@model HekimDetail
+@{
+    ViewData["Title"] = "Index";
+}
+
+
+<!-- Main content -->
+<section class="content">
+
+    <!-- Default box -->
+    <div class="card card-solid">
+        <div class="card-body">
+            <div class="row">
+                <div class="col-12 col-sm-6">
+                    <h3 class="d-inline-block d-sm-none"></h3>
+                    <div class="col-12">
+                        <img src="../../dist/img/@Model.Hekim.Picture" class="product-image" alt="Product Image">
+                    </div>
+                   
+                </div>
+                <div class="col-12 col-sm-6">
+                    <h3 class="my-3">@Model.Hekim.Name  @Model.Hekim.SureName</h3>
+                    <p><b>İxtisası: </b>@Model.Proprofession</p>
+                    <p><b>Vəzifəsi:</b> @Model.Position</p>
+                    <p><b>Yaşadığı ünvan: </b>@Model.Destination</p>
+                    <p><b>Doğulduğu ünvan: </b>@Model.Adress</p>
+                    <p><b>Doğum tarixi:</b> @Model.DateOfBirth.ToString("dd-MM-yyyy")</p>
+                    <p><b>İşə qəbul olduğu tarix:</b> @Model.Date.ToString("dd-MM-yyyy")</p>
+                    <p><b>Xarici dil bilikləri: </b>@Model.ForeignLanguages</p>
+                    @*<p><b>Email:</b>@Model.Email</p>*@
+                    <p><b>Əlaqə nömrəsi:</b>@Model.PhoneNumber</p>
+                    
+                    <p><b>Qan qrupu:</b> @Model.BloodGroup</p>
+
+                 
+
+                </div>
+            </div>
+            
+        </div>
+        <!-- /.card-body -->
+    </div>
+    <!-- /.card -->
+
+</section>
+<!-- /.content -->
+
+<script>
+    $(document).ready(function () {
+        $('.product-image-thumb').on('click', function () {
+            var $image_element = $(this).find('img')
+            $('.product-image').prop('src', $image_element.attr('src'))
+            $('.product-image-thumb.active').removeClass('active')
+            $(this).addClass('active')
+        })
+    })
+</script>

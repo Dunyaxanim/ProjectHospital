@@ -1,0 +1,79 @@
+﻿@model Patient
+@{
+    ViewData["Title"] = "Index";
+}
+
+
+
+
+<div class="card">
+    <div class="card-header">
+        <h1 class="card-title">Ətraflı məlumat</h1>
+    </div>
+
+    <!-- /.card-header -->
+    <div class="card-body">
+        <table id="example1" class="table table-bordered table-striped">
+            <thead>
+                <tr>
+
+                    <th>Ata adı</th>
+                    <th>Doğulduğu yer</th>
+                    <th>Yaşadığı ünvan</th>
+                    <th>Doğum tarixi</th>
+                    <th>Telefon nömrəsi</th>
+                    <th>Ev telefonu</th>
+                    <th>Email</th>
+                    <th>Vəsiqənin FİN kodu</th>
+                    <th>Qan qrupu</th>
+                    <th>Cinsi</th>
+
+                </tr>
+            </thead>
+            <tbody>
+
+                <tr>
+
+                    <td>@Model.PatientDetail.FatherName</td>
+
+                    <td>@Model.PatientDetail.Adress</td>
+                    <td>@Model.PatientDetail.Destination</td>
+                    <td>@Model.PatientDetail.DateOfBrith.ToString("dd-MM-yyyy")</td>
+                    <td>@Model.PatientDetail.MobileNumber</td>
+                    <td>@Model.PatientDetail.HomeNumber</td>
+                    <td>@Model.PatientDetail.EmailAdress</td>
+                    <td>@Model.PatientDetail.CodeOfIdentityCard</td>
+                    <td>@Model.PatientDetail.BloodGroup</td>
+                    <td>@Model.PatientDetail.Sex</td>
+                </tr>
+
+            </tbody>
+        </table>
+    </div>
+    <!-- /.card-body -->
+</div>
+<!-- /.card -->
+
+@section Scripts{
+    <script src="../../plugins/jszip/jszip.min.js"></script>
+    <script src="../../plugins/pdfmake/pdfmake.min.js"></script>
+    <script src="../../plugins/pdfmake/vfs_fonts.js"></script>
+    <script>
+        $(function () {
+            $("#example1").DataTable({
+                "responsive": true, "lengthChange": false, "autoWidth": false,
+                "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
+            }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+            $('#example2').DataTable({
+                "paging": true,
+                "lengthChange": false,
+                "searching": false,
+                "ordering": true,
+                "info": true,
+                "autoWidth": false,
+                "responsive": true,
+            });
+        });
+    </script>
+}
+

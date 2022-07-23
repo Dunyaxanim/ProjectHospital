@@ -1,0 +1,64 @@
+﻿@model EmailMessage
+@{
+    ViewData["Title"] = "Send";
+}
+
+<section class="content">
+
+    <!-- Default box -->
+    <div class="card">
+        <div class="card-body row">
+            <div class="col-5 text-center d-flex align-items-center justify-content-center">
+                <div class="">
+                    <h2>Email göndərin</h2>
+                    @if (ViewBag.Mgs != null)
+                    {
+                        <h4>@ViewBag.Mgs</h4>;
+                    }
+                    @*<p class="lead mb-5">
+                        123 Testing Ave, Testtown, 9876 NA<br>
+                        Phone: +1 234 56789012
+                    </p>*@
+                </div>
+            </div>
+            <div class="col-7">
+                <form asp-action="Send" method="post" enctype="multipart/form-data">
+                    <div asp-validation-summary="ModelOnly" class="text-danger">  </div>
+                    <div class="form-group">
+                        <label asp-for="@Model.To" for="inputEmail">Kimə</label>
+                        <input type="email" asp-for="@Model.To" id="inputEmail" class="form-control" />
+                        <span class="text-danger" asp-validation-for="@Model.To"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputSubject " asp-for="@Model.Subject">Mövzu</label>
+                        <input type="text" id="inputSubject" asp-for="@Model.Subject" class="form-control" />
+                        <span class="text-danger" asp-validation-for="@Model.Subject"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputSubject " asp-for="@Model.Body">Mesaj yazın</label>
+                        <input type="text" id="inputSubject" asp-for="@Model.Body" class="form-control" />
+                        <span class="text-danger" asp-validation-for="@Model.Body"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputSubject " type="file" >Fayil daxil edin</label>
+                        <input id="inputSubject" type="file" class="form-control" name="Attachment" />
+                
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" class="btn btn-primary" value="Send message">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+</section>
+<!-- /.content -->
+<!-- jQuery -->
+<!--<script src="../../plugins/jquery/jquery.min.js"></script>-->
+<!-- Bootstrap 4 -->
+<!--<script src="../../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>-->
+<!-- AdminLTE App -->
+<!--<script src="../../dist/js/adminlte.min.js"></script>-->
+<!-- AdminLTE for demo purposes -->
+<!--<script src="../../dist/js/demo.js"></script>-->

@@ -1,0 +1,185 @@
+﻿@model DashboardVM
+@{
+    ViewData["Title"] = "Home Page";
+    int maxincome = 0;
+    int maxexpense = 0;
+    int total = 0;
+    int users = 0;
+    int patients = 0;
+    int hekims = 0;
+}
+<main>
+    <div class="row">
+        @if (User.IsInRole("SuperAdmin") || User.IsInRole("Admin") || User.IsInRole("Accountant"))
+        {
+            <div class="col-lg-3 col-6">
+                <!-- small box -->
+                <div class="small-box bg-info">
+                    <div class="inner">
+                        <h3>
+                            @foreach (Income item in Model.Incomes)
+                            {
+                                maxincome = maxincome + @item.Amount;
+
+                            }
+                            <h4> @maxincome AZN</h4>
+                        </h3>
+                        <p>Maksimum gəlir</p>
+                    </div>
+                    <div class="icon">
+                        <i class="fa-solid fa-money-bill-1-wave"></i>
+                    </div>
+                    <a asp-controller="Income" asp-action="Index" class="small-box-footer">Ətraflı məlumat <i class="fas fa-arrow-circle-right"></i></a>
+                </div>
+            </div>
+            <!-- ./col -->
+            <div class="col-lg-3 col-6">
+                <!-- small box -->
+
+
+                <div class="small-box bg-success">
+                    <div class="inner">
+                        <h3>
+                            @foreach (Expense item in Model.Expenses)
+                            {
+                                maxexpense = maxexpense + @item.Amount;
+
+                            }
+                            <h4> @maxexpense AZN</h4>
+
+                            <p>Xərclənən məbləğ</p>
+                        </h3>
+                    </div>
+                    <div class="icon">
+                        <i class="ion ion-stats-bars"></i>
+                    </div>
+                    <a asp-controller="Expense" asp-action="Index" class="small-box-footer">Ətraflı məlumat <i class="fas fa-arrow-circle-right"></i></a>
+                </div>
+
+
+            </div>
+            <div class="col-lg-3 col-6">
+                <!-- small box -->
+                <div class="small-box bg-danger">
+                    <div class="inner">
+                        <h3>
+                            @{
+                                total = maxincome - maxexpense;
+                            }
+                            <h4> @total AZN</h4>
+                            <p>Balans</p>
+                        </h3>
+                    </div>
+                    <div class="icon">
+                        <i class="fa-solid fa-coins"></i>
+
+                    </div>
+                    <a class="small-box-footer">Xərc və gəlirlərin cəmi </a>
+                </div>
+            </div>
+        }
+        <!-- ./col -->
+        <div class="col-lg-3 col-6">
+            <!-- small box -->
+            <div class="small-box bg-warning">
+                <div class="inner">
+                    <h3>
+                        @{
+                            users = Model.Users.Count;
+                        }
+
+                    </h3>
+                    <h4> @users nəfər işçi</h4>
+                    <p>İstifadəçilər</p>
+                </div>
+                <div class="icon">
+                    <i class="ion ion-person-add"></i>
+                </div>
+
+            </div>
+        </div>
+        <div class="col-lg-3 col-6">
+            <!-- small box -->
+            <div class="small-box bg-primary">
+                <div class="inner">
+                    <h3>
+                        @{
+                            patients = Model.Patients.Count;
+                        }
+
+                    </h3>
+                    <h4> @patients nəfər</h4>
+                    <p>Xəstə sayı</p>
+                </div>
+                <div class="icon">
+                    <i class="nav-icon fa-solid fa-bed"></i>
+                </div>
+
+            </div>
+            <!--<div class="col-lg-3 col-6">-->
+            <!-- small box -->
+            <!--<div class="small-box bg-primary">
+                    <div class="inner">
+                        <h3>
+                            @{
+                                hekims = Model.Hekims.Count;
+                            }
+
+                        </h3>
+                        <h4> @hekims nəfər</h4>
+                        <p>Xəstə sayı</p>
+                    </div>
+                    <div class="icon">
+                        <i class="nav-icon fa-solid fa-bed"></i>
+                    </div>
+
+                </div>
+            </div>-->
+            <!-- ./col -->
+            <!-- ./col -->
+        </div>
+        <!-- /.row -->
+        <!-- Main row -->
+        <div class="row">
+            <!-- Left col -->
+            <!-- /.Left col -->
+            <!-- right col (We are only adding the ID to make the widgets sortable)-->
+            <section class="col-lg-5 connectedSortable">
+            </section>
+            <!-- right col -->
+        </div>
+</main>
+<!-- jQuery -->
+<!--<script src="../../plugins/jquery/jquery.min.js"></script>-->
+<!-- jQuery UI 1.11.4 -->
+<!--<script src="../../plugins/jquery-ui/jquery-ui.min.js"></script>-->
+<!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
+<!--<script>
+    $.widget.bridge('uibutton', $.ui.button)
+</script>-->
+<!-- /.row (main row) -->
+<!--<script src="../../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>-->
+<!-- ChartJS -->
+<!--<script src="../../plugins/chart.js/Chart.min.js"></script>-->
+<!-- Sparkline -->
+<!--<script src="../../plugins/sparklines/sparkline.js"></script>-->
+<!-- JQVMap -->
+<!--<script src="../../plugins/jqvmap/jquery.vmap.min.js"></script>
+<script src="../../plugins/jqvmap/maps/jquery.vmap.usa.js"></script>-->
+<!-- jQuery Knob Chart -->
+<!--<script src="../../plugins/jquery-knob/jquery.knob.min.js"></script>-->
+<!-- daterangepicker -->
+<!--<script src="../../plugins/moment/moment.min.js"></script>
+<script src="../../plugins/daterangepicker/daterangepicker.js"></script>-->
+<!-- Tempusdominus Bootstrap 4 -->
+<!--<script src="../../plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js"></script>-->
+<!-- Summernote -->
+<!--<script src="../../plugins/summernote/summernote-bs4.min.js"></script>-->
+<!-- overlayScrollbars -->
+<!--<script src="../../plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>-->
+<!-- AdminLTE App -->
+<!--<script src="dist/js/adminlte.js"></script>-->
+<!-- AdminLTE for demo purposes -->
+<!--<script src="dist/js/demo.js"></script>-->
+<!-- AdminLTE dashboard demo (This is only for demo purposes) -->
+<!--<script src="dist/js/pages/dashboard.js"></script>-->

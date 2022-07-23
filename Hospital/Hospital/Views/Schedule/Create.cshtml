@@ -1,0 +1,50 @@
+﻿@model Schedule
+@{
+    ViewData["Title"] = "Create";
+}
+
+<div asp-validation-summary="ModelOnly" class="text-danger">
+
+</div>
+<form method="post" enctype="multipart/form-data">
+    
+    <div class="form-group " id="maindepartment">
+        <label>Həkim</label>
+        <select class="form-control" name="hekimid">
+            @foreach (Hekim hekim in ViewBag.hekim)
+            {
+                <option value="@hekim.Id">@hekim.Name</option>
+            }
+        </select>
+
+    </div>
+    <label asp-for="@Model.Days" class="control-label">İşlədiyini günlər</label>
+    <select asp-for="@Model.Days" multiple class="form-control">
+        @foreach (var day in Enum.GetValues(typeof(Helper.ItemDay)))
+        {
+            <option value="@day.ToString()">@day.ToString()</option>
+        }
+
+    </select>
+    <span asp-validation-for="@Model.Days" class="text-danger"></span>
+
+
+    <div class="row">
+        <div class="col">
+            <label> İşə başlama vaxtı</label>
+            <input type="time" class="form-control" asp-for="@Model.StartTime">
+        </div>
+        <div class="col">
+            <label> İşdən çıxma vaxtı</label>
+            <input type="time" class="form-control" asp-for="@Model.EndTime">
+        </div>
+    </div>
+    <!-- /.card-body -->
+    <div class="card-footer">
+        <button type="submit" class="btn btn-primary">Yarat</button>
+        <a class="btn btn-danger">Geri qayıt</a>
+    </div>
+</form>
+
+
+<

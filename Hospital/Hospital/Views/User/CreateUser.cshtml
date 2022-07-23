@@ -1,0 +1,64 @@
+﻿@model RegisterVM
+@{
+    ViewData["Title"] = "CreateUser";
+}
+
+
+<div asp-validation-summary="ModelOnly" class="text-danger">
+
+</div>
+<form method="post" enctype="multipart/form-data">
+    <div class="card-body">
+        <div class="form-group">
+            <label asp-for="@Model.Name">Ad</label>
+            <input class="form-control"  placeholder="Ad daxil edin" asp-for="@Model.Name">
+            <span class="text-danger" asp-validation-for="@Model.Name"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="@Model.SureName">Soyad</label>
+            <input class="form-control"  placeholder="Soyad daxil edin" asp-for="@Model.SureName">
+            <span class="text-danger" asp-validation-for="@Model.SureName"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="@Model.UserName">İstifadəçi adı</label>
+            <input class="form-control"  placeholder="İstifadəçi adı daxil edin" asp-for="@Model.UserName">
+            <span class="text-danger" asp-validation-for="@Model.UserName"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="@Model.Email">Email</label>
+            <input class="form-control"  placeholder="fffff@mail.com" asp-for="@Model.Email">
+            <span class="text-danger" asp-validation-for="@Model.Email"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="@Model.Password">Şifrə</label>
+            <input class="form-control"  placeholder="Yeni şifrə yaradın" asp-for="@Model.Password">
+            <span class="text-danger" asp-validation-for="@Model.Password"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="@Model.CheckPassword">Şifrə yoxlanışı</label>
+            <input class="form-control"  placeholder="Şifrəni yoxlayın" asp-for="@Model.CheckPassword">
+            <span class="text-danger" asp-validation-for="@Model.CheckPassword"></span>
+        </div>
+        <select class="form-control"  name="sellectedrole" >
+            <label>Yaradılan şəxsin rolunu müəyyənləşdirin</label>
+            @foreach (IdentityRole role in ViewBag.Roles)
+            {
+                <option selected value="@role.Name">@role.Name</option>
+            }
+        </select>
+        @*<div class="form-group " id="maindepartment">
+            <label>Sellect main Categori</label>
+            <select class="form-control" name="departmentid">
+                @foreach (Department department in ViewBag.Department)
+                {
+                    <option value="@department.Id">@department.DepartmentName</option>
+                }
+            </select>
+        </div>*@
+    </div>
+    <!-- /.card-body -->
+    <button type="submit" class="btn btn-primary">Təadiq et</button>
+    <a class="btn btn-danger" asp-action="Index">Geri qayit</a>
+</form>
+
+

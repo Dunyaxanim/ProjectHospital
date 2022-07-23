@@ -1,0 +1,139 @@
+﻿@model Patient
+@{
+    ViewData["Title"] = "Create";
+}
+
+
+<div asp-validation-summary="ModelOnly" class="text-danger">
+
+</div>
+<form method="post" enctype="multipart/form-data">
+    <div class="card-body">
+       
+        <div class="form-group">
+            <label asp-for="@Model.FirstName">Ad</label>
+            <input class="form-control" id="exampleInputEmail1" placeholder="Ad daxil edin" asp-for="@Model.FirstName">
+            <span class="text-danger" asp-validation-for="@Model.FirstName"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="@Model.LastName">Soyad</label>
+            <input class="form-control" id="exampleInputPassword1" placeholder="Soyad daxil edin" asp-for="@Model.LastName">
+            <span class="text-danger" asp-validation-for="@Model.LastName"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="@Model.PatientDetail.HomeNumber">Ev telefonu</label>
+            <input type="number" class="form-control" id="exampleInputPassword1" placeholder="123456" asp-for="@Model.PatientDetail.HomeNumber">
+            <span class="text-danger" asp-validation-for="@Model.PatientDetail.HomeNumber"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="@Model.PatientDetail.MobileNumber">Əlaqə nömrəsi</label>
+            <input type="number" class="form-control" id="exampleInputPassword1" placeholder="123456" asp-for="@Model.PatientDetail.MobileNumber">
+            <span class="text-danger" asp-validation-for="@Model.PatientDetail.MobileNumber"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="@Model.PatientDetail.EmailAdress">Email</label>
+            <input class="form-control" id="exampleInputPassword1" placeholder="fffff@gmail.com" asp-for="@Model.PatientDetail.EmailAdress">
+            <span class="text-danger" asp-validation-for="@Model.PatientDetail.EmailAdress"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="@Model.PatientDetail.Adress">Doğulduğ yer</label>
+            <input class="form-control" id="exampleInputPassword1" placeholder="Ünvan" asp-for="@Model.PatientDetail.Adress">
+            <span class="text-danger" asp-validation-for="@Model.PatientDetail.Adress"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="@Model.PatientDetail.Destination">Hal hazırda yaşadığı ünvan</label>
+            <input class="form-control" id="exampleInputPassword1" placeholder="Ölkə/Şəhər/Küçə" asp-for="@Model.PatientDetail.Destination">
+            <span class="text-danger" asp-validation-for="@Model.PatientDetail.Destination"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="@Model.PatientDetail.DateOfBrith">Doğum tarixi</label>
+            <input type="date" class="form-control" id="exampleInputPassword1" placeholder="dd-MMM-yyyy" asp-for="@Model.PatientDetail.DateOfBrith">
+            <span class="text-danger" asp-validation-for="@Model.PatientDetail.DateOfBrith"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="@Model.PatientDetail.CodeOfIdentityCard">Şəxsiyyət vəsiqəsinin FIN kodu</label>
+            <input class="form-control" id="exampleInputPassword1" placeholder="#######" asp-for="@Model.PatientDetail.CodeOfIdentityCard">
+            <span class="text-danger" asp-validation-for="@Model.PatientDetail.CodeOfIdentityCard"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="@Model.PatientDetail.FatherName">Ata adı</label>
+            <input class="form-control" id="exampleInputPassword1" asp-for="@Model.PatientDetail.FatherName" placeholder="Xəstənin ata adını daxil edin">
+            <span class="text-danger" asp-validation-for="@Model.PatientDetail.FatherName"></span>
+        </div>
+       
+        
+        <fieldset class="form-group">
+            <div class="row">
+                <legend class="col-form-label col-sm-2 pt-0">Cinsi</legend>
+                <div class="col-sm-10">
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" id="gridRadios1" value="Qadın" checked asp-for="@Model.PatientDetail.Sex">
+                        <label class="form-check-label" asp-for="@Model.PatientDetail.Sex">
+                            Qadın
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" id="gridRadios2" value="Kişi" asp-for="@Model.PatientDetail.Sex">
+                        <label class="form-check-label" asp-for="@Model.PatientDetail.Sex">
+                            Kişi
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" id="gridRadios2" value="Digər" asp-for="@Model.PatientDetail.Sex">
+                        <label class="form-check-label" asp-for="@Model.PatientDetail.Sex">
+                            Digər
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </fieldset>
+        <fieldset class="form-group">
+            <div class="row">
+                <legend class="col-form-label col-sm-2 pt-0">Qan qurpu</legend>
+                <div class="col-sm-10">
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" id="gridRadios1" value=" I(O)" checked asp-for="@Model.PatientDetail.BloodGroup">
+                        <label class="form-check-label" asp-for="@Model.PatientDetail.BloodGroup">
+                            I(O)
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" id="gridRadios2" value="II(A)" asp-for="@Model.PatientDetail.BloodGroup">
+                        <label class="form-check-label" asp-for="@Model.PatientDetail.BloodGroup">
+                            II(A)
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" id="gridRadios3" value="III(B)" asp-for="@Model.PatientDetail.BloodGroup">
+                        <label class="form-check-label" asp-for="@Model.PatientDetail.BloodGroup">
+                            III(B)
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" id="gridRadios3" value="IV(C)" asp-for="@Model.PatientDetail.BloodGroup">
+                        <label class="form-check-label" asp-for="@Model.PatientDetail.BloodGroup">
+                            IV(C)
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </fieldset>
+
+        <div class="form-group " id="maindepartment">
+            <label>Həkim seçin</label>
+            <select class="form-control" name="hekimid">
+                @foreach (Hekim hekim in ViewBag.Hekim)
+                {
+                    <option value="@hekim.Id">@hekim.Name</option>
+                }
+            </select>
+        </div>
+
+    </div>
+    <!-- /.card-body -->
+    <button type="submit" class="btn btn-primary">Təsdiq et</button>
+    <a asp-action="Index" class="btn btn-danger">Geri qayit</a>
+</form>
+
+

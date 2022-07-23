@@ -1,0 +1,28 @@
+﻿@model ExpenseCategory
+@{
+    ViewData["Title"] = "Create";
+}
+
+
+
+<form method="post" enctype="multipart/form-data">
+    <div class="card-body">
+        <div class="form-group">
+            <label asp-for="@Model.Name">Ad</label>
+            <input class="form-control" id="exampleInputEmail1" placeholder="Ad daxil edin" asp-for="@Model.Name">
+            <span class="text-danger" asp-validation-for="@Model.Name"></span>
+        </div>
+    </div>
+    <!-- /.card-body -->
+    <div class="card-footer">
+        <button type="submit" class="btn btn-primary">Yarat</button>
+        <a asp-action="Index" class="btn btn-danger">Ləğv et</a>
+    </div>
+</form>
+
+
+<script>
+    $(function () {
+        bsCustomFileInput.init();
+    });
+</script>

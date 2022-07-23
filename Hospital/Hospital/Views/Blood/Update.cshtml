@@ -1,0 +1,45 @@
+﻿@model Blood
+@{
+    ViewData["Title"] = "Update";
+}
+
+<!-- Google Font: Source Sans Pro -->
+<!--<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">-->
+<!-- Font Awesome -->
+<!--<link rel="stylesheet" href="../../plugins/fontawesome-free/css/all.min.css">-->
+<!-- Theme style -->
+<!--<link rel="stylesheet" href="../../dist/css/adminlte.min.css">-->
+
+<form method="post" enctype="multipart/form-data">
+    <div class="card-body">
+        <div class="form-group">
+            <label asp-for="@Model.Quantity">Yeni qanın miqdarı</label>
+            <input class="form-control" id="exampleInputEmail1" placeholder="1l" asp-for="@Model.Quantity">
+            <span class="text-danger" asp-validation-for="@Model.Quantity"></span>
+        </div>
+    </div>
+    <!-- /.card-body -->
+
+    <div class="card-footer">
+        <button type="submit" class="btn btn-primary">Dəyiş</button>
+        <a class="btn btn-danger" asp-action="Index">Ləğv et</a>
+    </div>
+</form>
+
+
+<!-- jQuery -->
+<!--<script src="../../plugins/jquery/jquery.min.js"></script>-->
+<!-- Bootstrap 4 -->
+<!--<script src="../../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>-->
+<!-- bs-custom-file-input -->
+<!--<script src="../../plugins/bs-custom-file-input/bs-custom-file-input.min.js"></script>-->
+<!-- AdminLTE App -->
+<!--<script src="../../dist/js/adminlte.min.js"></script>-->
+<!-- AdminLTE for demo purposes -->
+<!--<script src="../../dist/js/demo.js"></script>-->
+<!-- Page specific script -->
+@section Scripts{
+
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+}
